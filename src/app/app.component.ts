@@ -11,6 +11,7 @@ export class AppComponent {
   mensaje: string = '';
   tipoMensaje: 'success' | 'danger' | 'warning' = 'success';
   datosCertificacion: any = null;
+  mostrarModal: boolean = false;
 
   constructor(private validacionService: ValidacionService) {}
 
@@ -28,9 +29,9 @@ export class AppComponent {
         if (res.valido) {
           this.tipoMensaje = 'success';
           this.mensaje = 'Certificación validada';
-          this.datosCertificacion = res.datos;
+          this.datosCertificacion = res.datosCertificacion;
+          this.mostrarModal = true;
 
-          // Lanzar confetti
           const canvas = document.getElementById('confetti-canvas') as HTMLCanvasElement;
           if (canvas) {
             const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
@@ -54,6 +55,10 @@ export class AppComponent {
         this.resetMensaje();
       }
     );
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
   }
 
   private resetMensaje() {
