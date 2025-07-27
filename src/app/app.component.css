@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90% !important;
+    height: auto !important;
+  }
+
+  .col-12 {
+    padding: 0 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
