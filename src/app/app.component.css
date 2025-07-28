@@ -1,14 +1,57 @@
 @media screen and (max-width: 768px) {
   .container {
-    width: 90% !important;
+    width: 95% !important;
     height: auto !important;
+    padding: 10px !important;
   }
 
   .col-12 {
-    padding: 0 10px;
+    padding: 0 10px !important;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  h1, h2 {
+    font-size: 1.4rem !important;
+    text-align: center !important;
+  }
+
+  label {
+    font-size: 1rem !important;
+    text-align: center !important;
+  }
+
+  input[type="text"] {
+    font-size: 1rem !important;
+  }
+
+  button {
+    width: 100% !important;
+    font-size: 1rem !important;
+  }
+
+  img {
+    max-width: 100px !important;
+    height: auto !important;
+    margin: 10px auto !important;
+    display: block;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .mt-4 {
+    margin-top: 1rem !important;
+  }
+
+  .fs-1 {
+    font-size: 1.8rem !important;
+  }
+
+  .fs-4 {
+    font-size: 1.1rem !important;
+  }
+
+  .fs-2 {
+    font-size: 1.3rem !important;
   }
 }
