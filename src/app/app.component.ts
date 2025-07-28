@@ -7,6 +7,9 @@ import confetti from 'canvas-confetti';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   codigo: string = '';
   mensaje: string = '';
   tipoMensaje: 'success' | 'danger' | 'warning' = 'success';
@@ -32,12 +35,16 @@ export class AppComponent {
           this.datosCertificacion = res.datosCertificacion;
           this.mostrarModal = true;
 
+          setTimeout(() => {
+                            this.cerrarModal();
+                          }, 10000); // Oculta el panel después de 10 segundos
+
           const canvas = document.getElementById('confetti-canvas') as HTMLCanvasElement;
           if (canvas) {
             const myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
             myConfetti({
-              particleCount: 60,
-              spread: 60,
+              particleCount: 80,
+              spread: 100,
               origin: { y: 0.6 }
             });
           }

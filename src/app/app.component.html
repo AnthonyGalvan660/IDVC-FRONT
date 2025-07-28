@@ -1,51 +1,102 @@
-<!-- Logo -->
-<div class="text-center mt-3">
-  <img src="assets/Imagenes/logo.png" alt="Logos" class="img-fluid" style="max-height: 70px; max-width: 200px;">
-</div>
+<div class="main-container container-fluid">
+  <!-- Logo centrado -->
+  <div class="d-flex justify-content-center mt-4 mb-3">
+    <img src="assets/Imagenes/logo.png" alt="Logos" class="img-fluid" style="max-height: 100px;">
+  </div>
 
-<!-- Toast mensajes -->
-<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 500;">
-  <div class="toast align-items-center text-white border-0 show"
-       role="alert" aria-live="assertive" aria-atomic="true"
-       *ngIf="mensaje"
-       [ngClass]="{
-         'bg-success': tipoMensaje === 'success',
-         'bg-danger': tipoMensaje === 'danger',
-         'bg-warning text-dark': tipoMensaje === 'warning'
-       }" style="max-width: 260px;">
-    <div class="d-flex">
-      <div class="toast-body fs-6 text-truncate" style="max-width: 240px;">
-        <i class="me-2"
-           [ngClass]="{
-             'bi-check-circle-fill': tipoMensaje === 'success',
-             'bi-exclamation-triangle-fill': tipoMensaje === 'warning',
-             'bi-x-circle-fill': tipoMensaje === 'danger'
-           }"></i>
-        {{ mensaje }}
+  <!-- Toast mensajes -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 500;">
+    <div class="toast align-items-center text-white border-0 show"
+        role="alert" aria-live="assertive" aria-atomic="true"
+        *ngIf="mensaje"
+        [ngClass]="{
+          'bg-success': tipoMensaje === 'success',
+          'bg-danger': tipoMensaje === 'danger',
+          'bg-warning text-dark': tipoMensaje === 'warning'
+        }" style="max-width: 260px;">
+      <div class="d-flex">
+        <div class="toast-body fs-6 text-truncate" style="max-width: 240px;">
+          <i class="me-2"
+            [ngClass]="{
+              'bi-check-circle-fill': tipoMensaje === 'success',
+              'bi-exclamation-triangle-fill': tipoMensaje === 'warning',
+              'bi-x-circle-fill': tipoMensaje === 'danger'
+            }"></i>
+          {{ mensaje }}
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Formulario principal -->
-<div class="container mt-5 px-3">
-  <div class="mx-auto p-4 rounded" style="background: linear-gradient(to right, #0c3d98, #185ADB); max-width: 500px;">
-    <h2 class="text-center text-white mb-4">VALIDACIÓN DE CERTIFICACIONES</h2>
-    <label for="codigo" class="form-label text-white">Ingrese el código de la certificación:</label>
-    <input [(ngModel)]="codigo" id="codigo" type="text" class="form-control" placeholder="Ej: ABC123">
-    <button class="btn btn-primary mt-4 w-100" style="background-color: rgb(18, 8, 107);" (click)="validar()">Validar</button>
-  </div>
-</div>
+  <!-- Contenedor principal: Formulario + Panel de resultados (espacio fijo) -->
+  <div class="d-flex justify-content-center align-items-start gap-4 flex-wrap">
 
-<!-- Resultados -->
-<div class="container mt-4 px-3">
-  <div *ngIf="datosCertificacion" class="card mx-auto" style="max-width: 500px;">
-    <div class="card-header bg-primary text-white">Datos de la Certificación</div>
-    <div class="card-body">
-      <h5 class="card-title">{{ datosCertificacion.razon }}</h5>
-      <p class="card-text">Nombre: {{ datosCertificacion.nombre }}</p>
-      <p class="card-text">Participación: {{ datosCertificacion.tipo }}</p>
-      <p class="card-text">Fecha de emisión: {{ datosCertificacion.fecha_emision | date }}</p>
+    <!-- Formulario fijo en el centro (más grande) -->
+    <div class="p-5 rounded shadow-lg"
+        style="background: linear-gradient(to right, #0c3d98, #185ADB); width: 680px; min-height: 550px; display: flex; flex-direction: column;">
+
+      <!-- Grupo centrado -->
+      <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+        <h2 class="text-white" style="font-size: 2.3rem;">VALIDACIÓN DE CERTIFICACIONES</h2>
+        <label for="codigo" class="form-label text-white fs-4 text-center w-100 mt-4">
+          Ingrese el código de la certificación:
+        </label>
+        <input [(ngModel)]="codigo" id="codigo" type="text"
+              class="form-control form-control-lg mb-4 w-75 text-center" placeholder="Ej: ABC123">
+
+        <button class="btn btn-light btn-lg w-75"
+                style="background-color: rgb(18, 8, 107); color: white;" (click)="validar()">
+          Validar
+        </button>
+      </div>
+    </div>
+    <!-- Panel lateral fijo (siempre visible, contenido cambia con mostrarModal) -->
+    <div class="sidebar shadow-lg">
+      <div *ngIf="mostrarModal; else placeholder" 
+          style="width: 680px; min-height: 550px; background-color: white; border: 1px solid #dee2e6; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+        
+        <!-- Encabezado superior -->
+        <div class="bg-primary text-white p-3 d-flex justify-content-between align-items-center" 
+            style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <span class="fs-5 fw-semibold">Datos de la Certificación</span>
+          <button class="btn btn-light btn-sm" (click)="cerrarModal()">×</button>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="p-4 bg-light rounded-bottom">
+          
+          <!-- Título principal (razón) -->
+          <h5 class="text-primary text-uppercase fw-bold mb-4" style="font-size: 1.25rem; border-bottom: 2px solid #0d6efd; padding-bottom: 10px;">
+            {{ datosCertificacion.razon }}
+          </h5>
+
+          <!-- Datos formateados -->
+          <div class="mb-4">
+            <label class="text-secondary fw-semibold d-block mb-1">Nombre del participante</label>
+            <span class="text-dark fs-6">{{ datosCertificacion.nombre }}</span>
+          </div>
+
+          <div class="mb-4">
+            <label class="text-secondary fw-semibold d-block mb-1">Tipo de participación</label>
+            <span class="text-dark fs-6">{{ datosCertificacion.tipo }}</span>
+          </div>
+
+          <div class="mb-4">
+            <label class="text-secondary fw-semibold d-block mb-1">Fecha de emisión</label>
+            <span class="text-dark fs-6">{{ datosCertificacion.fecha_emision | date }}</span>
+          </div>
+
+          <!-- Imagen centrada -->
+          <div class="text-center mt-4">
+            <img src="assets/Imagenes/Certificado.png" alt="Logo" class="img-fluid" style="max-width: 172px;">
+          </div>
+        </div>
+      </div>
+      <ng-template #placeholder>
+        <div class="p-4 text-secondary d-flex flex-column justify-content-center align-items-center" style="width: 680px; min-height: 550px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <p class="text-center fs-5">No hay datos para mostrar. Porfavor ingrese un codigo</p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
