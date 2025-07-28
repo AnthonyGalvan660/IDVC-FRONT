@@ -5,7 +5,17 @@
     align-items: center !important;
     gap: 2rem !important;
   }
-  
+
+  /* Formulario y panel lateral ajustados al 100% */
+  .d-flex.flex-wrap > div,
+  .sidebar > div[ng-reflect-ng-if],
+  .sidebar > ng-template > div {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box;
+  }
+
   /* Ajuste del formulario */
   .form-label,
   label {
