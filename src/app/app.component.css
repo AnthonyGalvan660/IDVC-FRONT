@@ -39,6 +39,7 @@
   h1, h2 {
     font-size: 1.6rem !important;
     text-align: center !important;
+    margin-top: 1rem !important; /* NUEVO: espacio superior para h1 */
   }
 
   .fs-4 {
@@ -58,6 +59,17 @@
     height: auto !important;
     display: block;
     margin: 1rem auto 0 auto !important;
+  }
+
+  /* NUEVO: centrar títulos con clase específica */
+  .titulo-certificacion {
+    text-align: center !important;
+    margin-top: 1rem !important;
+  }
+
+  /* NUEVO: imagen con espaciado inferior */
+  .imagen-validacion {
+    margin-bottom: 1rem !important;
   }
 
   /* Elimina sombras si molestan en móviles */
