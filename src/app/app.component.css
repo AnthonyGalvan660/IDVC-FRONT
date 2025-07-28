@@ -1,42 +1,55 @@
 @media screen and (max-width: 750px) {
-    .sidebar > div[ng-reflect-ng-if] {
-    width: 100% !important;
-    min-height: auto !important;
-    padding: 1rem;
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
+
   .container {
     width: 95% !important;
-    height: auto !important;
-    padding: 10px !important;
+    max-width: 100%;
+    padding: 1rem !important;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .col-12 {
     padding: 0 10px !important;
+    box-sizing: border-box;
   }
 
   h1, h2 {
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     text-align: center !important;
+    margin-bottom: 1rem;
   }
 
   label {
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
+    display: block;
     text-align: center !important;
+    margin-bottom: 0.8rem;
   }
 
   input[type="text"] {
     font-size: 1rem !important;
+    width: 100% !important;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
   }
 
   button {
     width: 100% !important;
     font-size: 1rem !important;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
   }
 
   img {
-    max-width: 100px !important;
+    width: 120px !important;
     height: auto !important;
-    margin: 10px auto !important;
+    margin: 1rem auto !important;
     display: block;
   }
 
@@ -45,7 +58,7 @@
   }
 
   .mt-4 {
-    margin-top: 1rem !important;
+    margin-top: 1.5rem !important;
   }
 
   .fs-1 {
@@ -53,10 +66,16 @@
   }
 
   .fs-4 {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
   }
 
   .fs-2 {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
+  }
+
+  .sidebar > div[ng-reflect-ng-if] {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 1rem !important;
   }
 }
