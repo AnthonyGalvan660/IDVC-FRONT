@@ -1,81 +1,67 @@
 @media screen and (max-width: 750px) {
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  /* Contenedor principal (ambos bloques apilados en columna) */
+  .d-flex.flex-wrap {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
   }
 
-  .container {
-    width: 95% !important;
-    max-width: 100%;
-    padding: 1rem !important;
-    margin: 0 auto;
+  /* Formulario y panel lateral ajustados al 100% */
+  .d-flex.flex-wrap > div,
+  .sidebar > div[ng-reflect-ng-if],
+  .sidebar > ng-template > div {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 1.5rem !important;
     box-sizing: border-box;
   }
 
-  .col-12 {
-    padding: 0 10px !important;
-    box-sizing: border-box;
-  }
-
-  h1, h2 {
-    font-size: 1.5rem !important;
-    text-align: center !important;
-    margin-bottom: 1rem;
-  }
-
+  /* Ajuste del formulario */
+  .form-label,
   label {
-    font-size: 1.1rem !important;
-    display: block;
+    font-size: 1rem !important;
     text-align: center !important;
-    margin-bottom: 0.8rem;
   }
 
   input[type="text"] {
-    font-size: 1rem !important;
     width: 100% !important;
+    font-size: 1rem !important;
     padding: 0.6rem;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
+    text-align: center;
   }
 
   button {
     width: 100% !important;
     font-size: 1rem !important;
     padding: 0.75rem;
-    margin-top: 0.5rem;
   }
 
-  img {
-    width: 120px !important;
-    height: auto !important;
-    margin: 1rem auto !important;
-    display: block;
-  }
-
-  .text-center {
+  h1, h2 {
+    font-size: 1.6rem !important;
     text-align: center !important;
   }
 
-  .mt-4 {
-    margin-top: 1.5rem !important;
-  }
-
-  .fs-1 {
-    font-size: 1.8rem !important;
-  }
-
   .fs-4 {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
   }
 
-  .fs-2 {
-    font-size: 1.4rem !important;
+  .fs-5, .fs-6 {
+    font-size: 1rem !important;
   }
 
-  .sidebar > div[ng-reflect-ng-if] {
-    width: 100% !important;
-    min-height: auto !important;
-    padding: 1rem !important;
+  .mt-4 {
+    margin-top: 1rem !important;
+  }
+
+  img {
+    max-width: 100px !important;
+    height: auto !important;
+    display: block;
+    margin: 1rem auto 0 auto !important;
+  }
+
+  /* Elimina sombras si molestan en móviles */
+  .shadow-lg {
+    box-shadow: none !important;
   }
 }
