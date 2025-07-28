@@ -27,22 +27,23 @@
       </div>
     </div>
   </div>
+  <!-- Contenedor principal: Formulario + Panel de resultados -->
+ <div class="d-flex justify-content-center align-items-start gap-4 flex-wrap">
 
-  <!-- Contenedor principal: Formulario + Panel de resultados (espacio fijo) -->
-  <div class="d-flex justify-content-center align-items-start gap-4 flex-wrap">
-
-    <!-- Formulario fijo en el centro (más grande) -->
+    <!-- Formulario -->
     <div class="p-5 rounded shadow-lg"
         style="background: linear-gradient(to right, #0c3d98, #185ADB); width: 680px; min-height: 550px; display: flex; flex-direction: column;">
 
-      <!-- Grupo centrado -->
       <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
         <h2 class="text-white" style="font-size: 2.3rem;">VALIDACIÓN DE CERTIFICACIONES</h2>
+
         <label for="codigo" class="form-label text-white fs-4 text-center w-100 mt-4">
           Ingrese el código de la certificación:
         </label>
+
         <input [(ngModel)]="codigo" id="codigo" type="text"
-              class="form-control form-control-lg mb-4 w-75 text-center" placeholder="Ej: ABC123">
+              class="form-control form-control-lg mb-4 w-75 text-center"
+              placeholder="Ej: ABC123">
 
         <button class="btn btn-light btn-lg w-75"
                 style="background-color: rgb(18, 8, 107); color: white;" (click)="validar()">
@@ -50,57 +51,55 @@
         </button>
       </div>
     </div>
-    <!-- Panel lateral fijo y centrado -->
-    <div class="d-flex justify-content-center">
-      <div class="rounded shadow-lg bg-white" style="width: 680px; height: 550px; display: flex; flex-direction: column; overflow: hidden;">
-        
-        <div *ngIf="mostrarModal; else placeholder" class="panel-cert shadow-sm d-flex flex-column h-100">
-          
-          <!-- Encabezado superior -->
-          <div class="bg-primary text-white p-3 d-flex justify-content-between align-items-center"
-            style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <span class="fs-5 fw-semibold">Datos de la Certificación</span>
-            <button class="btn btn-light btn-sm" (click)="cerrarModal()">×</button>
-          </div>
 
-          <!-- Contenido scrollable -->
-          <div class="p-4 bg-light rounded-bottom overflow-auto" style="flex-grow: 1;">
-            <!-- Título principal -->
-            <h5 class="text-primary text-uppercase fw-bold mb-4" style="font-size: 1.25rem; border-bottom: 2px solid #0d6efd; padding-bottom: 10px;">
-              {{ datosCertificacion.razon }}
-            </h5>
+    <!-- Panel lateral de resultados -->
+    <div class="rounded shadow-lg bg-white border border-primary" style="width: 680px; min-height: 550px; display: flex; flex-direction: column;">
 
-            <div class="mb-4">
-              <label class="text-secondary fw-semibold d-block mb-1">Nombre del participante</label>
-              <span class="text-dark fs-6">{{ datosCertificacion.nombre }}</span>
-            </div>
+      <!-- Mostrar datos si existen -->
+      <div *ngIf="mostrarModal; else placeholder" class="flex-grow-1 d-flex flex-column">
 
-            <div class="mb-4">
-              <label class="text-secondary fw-semibold d-block mb-1">Tipo de participación</label>
-              <span class="text-dark fs-6">{{ datosCertificacion.tipo }}</span>
-            </div>
-
-            <div class="mb-4">
-              <label class="text-secondary fw-semibold d-block mb-1">Fecha de emisión</label>
-              <span class="text-dark fs-6">{{ datosCertificacion.fecha_emision | date }}</span>
-            </div>
-
-            <!-- Imagen centrada -->
-            <div class="text-center mt-4">
-              <img src="assets/Imagenes/Certificado.png" alt="Logo" class="img-fluid" style="max-width: 172px;">
-            </div>
-          </div>
+        <!-- Encabezado -->
+        <div class="bg-primary text-white d-flex justify-content-between align-items-center px-3 py-2 rounded-top">
+          <span class="fs-4 fw-semibold">Datos de la Certificación</span>
+          <button class="btn-cerrar-modal" (click)="cerrarModal()">×</button>
         </div>
+        <!-- Cuerpo del modal -->
+        <div class="px-4 py-3 bg-light flex-grow-1">
 
-        <!-- Placeholder si no hay datos -->
-        <ng-template #placeholder>
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <p class="text-center fs-5 m-0 text-secondary">No hay datos para mostrar. Por favor ingrese un código</p>
+          <h5 class="text-primary text-uppercase fw-bold mb-4 border-bottom pb-2">
+            {{ datosCertificacion.razon }}
+          </h5>
+
+          <div class="mb-3">
+            <label class="text-secondary fw-semibold mb-1 d-block">Nombre del participante</label>
+            <span class="text-dark">{{ datosCertificacion.nombre }}</span>
           </div>
-        </ng-template>
+
+          <div class="mb-3">
+            <label class="text-secondary fw-semibold mb-1 d-block">Tipo de participación</label>
+            <span class="text-dark">{{ datosCertificacion.tipo }}</span>
+          </div>
+
+          <div class="mb-3">
+            <label class="text-secondary fw-semibold mb-1 d-block">Fecha de emisión</label>
+            <span class="text-dark">{{ datosCertificacion.fecha_emision | date }}</span>
+          </div>
+
+          <div class="text-center mt-auto pt-4">
+            <img src="assets/Imagenes/Certificado.png" alt="Logo" class="img-fluid" style="max-width: 140px;">
+          </div>
+
+        </div>
       </div>
+
+      <!-- Placeholder si no hay datos -->
+      <ng-template #placeholder>
+        <div class="d-flex justify-content-center align-items-center flex-grow-1 bg-light text-secondary rounded p-3" style="min-height: 550px;">
+          <p class="text-center fs-5 m-0">
+            No hay datos para mostrar. Por favor ingrese un código.
+          </p>
+        </div>
+      </ng-template>
     </div>
-
-
   </div>
 </div>

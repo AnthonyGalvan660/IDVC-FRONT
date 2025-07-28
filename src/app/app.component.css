@@ -12,7 +12,6 @@
   .sidebar > ng-template > div {
     width: 100% !important;
     min-height: auto !important;
-    padding: 1.5rem !important;
     box-sizing: border-box;
   }
 
@@ -20,7 +19,7 @@
   .form-label,
   label {
     font-size: 1rem !important;
-    text-align: center !important;
+    text-align: left !important;
   }
 
   input[type="text"] {
@@ -28,12 +27,6 @@
     font-size: 1rem !important;
     padding: 0.6rem;
     text-align: center;
-  }
-
-  button {
-    width: 100% !important;
-    font-size: 1rem !important;
-    padding: 0.75rem;
   }
 
   h1, h2 {
@@ -55,7 +48,7 @@
   }
 
   img {
-    max-width: 100px !important;
+    max-width: 150px !important;
     height: auto !important;
     display: block;
     margin: 1rem auto 0 auto !important;
@@ -75,5 +68,22 @@
   /* Elimina sombras si molestan en móviles */
   .shadow-lg {
     box-shadow: none !important;
+  }
+  .btn-cerrar-modal {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .btn-cerrar-modal:hover {
+    background-color: #f0f0f0;
   }
 }
