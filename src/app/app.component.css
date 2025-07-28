@@ -1,4 +1,9 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
+    .sidebar > div[ng-reflect-ng-if] {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 1rem;
+  }
   .container {
     width: 95% !important;
     height: auto !important;
